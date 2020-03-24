@@ -139,7 +139,7 @@ python3 -m nltk.downloader punkt
 
 ​	关于如何训练之类的细节可查看原项目的说明，最后再展示一下训练了一万多轮后模型的表现：
 
-![Screen Shot 2020-03-22 at 10.29.41 am](version1/image/Screen Shot 2020-03-22 at 10.29.41 am.png)
+![Screen Shot 2020-03-22 at 10.29.41 am](version1/image/2.png)
 
 ​	总的来说看着还行，起码说出来的语句也通顺，只用了几层LSTM构成的seq2seq，没用word2vec的embedding，没有注意力机制，能达到这个效果也算满意了。
 
