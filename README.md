@@ -23,13 +23,11 @@
 关于对话系统的综述我看了很多，但总感觉没有指明一条很清晰的学习路线，所以这里我花了很多时间，终于整理出一个大纲，方便大家宏观地了解学习对话系统到底需要先了解什么理论概念，根据自身的情况补充学习好这些基础后，就可以开始看对话系统的论文了。
 
 #### 3.1 自然语言理解
-
 * 语义表示
   * Distributional semantics（分布语义表示）
     * word2vec、glove
   * Model-theoretic semantics（模型论语义表示）
   * Frame semantics（框架语义表示）
-
 * 意图检测（分类）
   * 基于规则的方法
     * CFG
@@ -37,7 +35,6 @@
        * SVM
   * 基于深度学习
        * CNN、RNN、LSTM
-
 * 语义槽填充（slot filling）
   * 序列标注方法
     * 条件随机场
@@ -45,35 +42,29 @@
     * CNN、RNN
 
 #### 3.2 对话管理
-
 * 对话状态跟踪器（Dialogue State Tracking）
   * 神经信念度跟踪模型（neural belief tracker, NBT）
-  
 * 对话策略学习（Dialogue policy learning）
   * 基于 ACER 方法的策略优化
 
 #### 3.3 自然语言生成
-
 * 神经生成模型（Neural Generative Models）
   * seq2seq
 
  <br/> <br/>
 
 ### 4. 对话系统
-
 * 任务导向型对话系统
   * pipeline方法
     * 主要由自然语言理解、对话管理、自然语言生成构成
   * end-to-end方法
     * seq2seq、transformer、bert
-    
 * 非任务导向型对话系统
   * 生成模型
     * Neural Generative Models
   * 基于检索的方法
     * 单轮回复匹配
     * 多轮回复匹配
-  
   * 混合方法
 
  <br/> <br/>
