@@ -5,9 +5,7 @@
 
 除此之外，我一直觉得人类的语言是最神奇的东西，我们能够用语言交流，能够用语言记录，用语言表达知识，甚至从现有的知识中推导出新的知识，这一切都是基于语言进行的。可是人类的智慧和生命终究是有上限的，而机器没有这些限制，假如有一天，我们能够让机器，用它们的语言表达知识，推导新的知识，再转化成人类能理解的语言，我们再去验证，这绝对会是人类史上最大的突破。
 
-因此，这里主要讨论一下关于对话系统的学习路线，目前感觉网上还没有一个比较统一或者鲜明的路线，所以这也是我自己的探索过程，或者说一个学习记录，我会不断修改更新。
-
-还有一点需要说明的是，本项目主要针对深度学习，对于基于规则和基于传统机器学习的模型理论也会提及一点，毕竟这是对话系统发展的一部分，部分理论概念在深度学习中也有所涉及（比如基于规则时代提出的语义槽这个概念），同时了解他们的思路也会带来一些启发，但重心还是会放在seq2seq、transformer等深度学习的模型上。
+因此，这里主要讨论一下基于深度学习的对话系统，目前感觉网上还没有一个比较统一或者鲜明的路线，所以这也是我自己的探索过程，或者说一个学习记录。
 
 <br/>
 
@@ -15,13 +13,13 @@
 
 * 编程基础就不再详细说了，tensorflow、pytorch双修肯定不会错；
 
-* 本项目是在[NLPBeginner]("https://github.com/JesseYule/NLPBeginner")的基础上写的，或者说在写这个项目之前，我学习的所有关于自然语言处理的知识都在NLPBeginner都说了，可以大致看看，基本上对word embedding、基础神经网络有了解就足够了。
+* 本项目是在[NLPBeginner]("https://github.com/JesseYule/NLPBeginner")的基础上写的，或者说在写这个项目之前，我学习的所有关于自然语言处理的知识都在NLPBeginner都说了，可以大致看看。
 
 <br/>
 
 ### 3. 相关基础理论
 
-关于对话系统的综述我看了很多，但总感觉没有指明一条很清晰的学习路线，所以这里我花了很多时间，终于整理出一个大纲，方便大家宏观地了解学习对话系统到底需要先了解什么理论概念，根据自身的情况补充学习好这些基础后，就可以开始看对话系统的论文了。
+下面的大纲是我花了很多时间整理出来的，因为我比较关注的是基于深度学习的对话系统，所以会省略一些基于规则和传统机器学习的方法，没有做到面面俱到，当然大体的方向上应该是比较完整的，方便大家宏观地了解学习对话系统到底需要先了解什么理论概念。
 
 #### 3.1 自然语言理解
 
@@ -61,19 +59,29 @@
 
 #### 3.2 对话管理
 
-* 对话状态跟踪器（Dialogue State Tracking）
+关于对话管理，我选取了几篇经典论文，值得一看。
 
-  * 神经信念度跟踪模型（neural belief tracker, NBT）
+* Dialogue State Tracking
 
-* 对话策略学习（Dialogue policy learning）
+  * [Dialog State Tracking Challenge (DSTC)](https://www.microsoft.com/en-us/research/event/dialog-state-tracking-challenge/)
 
-  * 基于 ACER 方法的策略优化
+  * [Neural Belief Tracker: Data-Driven Dialogue State Tracking](https://arxiv.org/abs/1606.03777)
+
+* Dialogue policy learning
+
+  * [A Network-based End-to-End Trainable Task-oriented Dialogue System](https://arxiv.org/abs/1604.04562)
 
 #### 3.3 自然语言生成
 
-* 神经生成模型（Neural Generative Models）
+关于自然语言生成，虽然也有不少传统pipeline方法，但目前我觉得比较主流的还是seq2seq这类深度学习模型，当然如果遇到经典的值得学习的传统模型我也会补充上去。
+
+* 基于深度学习
 
   * seq2seq
+
+  * transformer
+
+  * bert
 
  <br/>
 
@@ -115,12 +123,26 @@
 
  <br/>
 
-### 6. 对话系统实例
+### 6. 学习笔记
 
-#### 6.1 基于seq2seq的非任务导向型对话系统（闲聊机器人）
+* [自然语言理解概述](https://blog.csdn.net/jesseyule/article/details/104929582)
 
-没有word2vec、没有注意力机制，只由几层LSTM构成的seq2seq模型，方便大家快速理解模型的结构和原理。
+* [意图识别与语义槽填充](https://blog.csdn.net/jesseyule/article/details/105105886)
 
-在[DeepQA](https://github.com/Conchylicultor/DeepQA)的基础上进行删减，减少了一些不必要的功能，同时增加了大量中文注释（甚至有点啰嗦），还是为了方便大家能快速看懂代码，数据也不需要下载，只需要安装相关的库即可训练看到效果。
+* [对话管理简述](https://blog.csdn.net/jesseyule/article/details/105166348)
 
-总的来说，这个例子就是希望用最简单直接的方法实现一个对话系统。
+* [DST与Neural Belief Tracker](https://blog.csdn.net/jesseyule/article/details/105167212)
+
+* [自然语言生成简述](https://blog.csdn.net/jesseyule/article/details/105201148)
+
+ <br/>
+
+### 7. 对话系统实例
+
+#### 7.1 基于seq2seq的自然语言生成模型（聊天机器人）
+
+第一个例子选择seq2seq的聊天机器人的原因很简单，第一，模型简单容易实现容易理解；第二，其实看回对话系统，seq2seq本身可以构建非任务导向型系统，也可以构建end2end的任务导向型对话系统，在pipeline的任务导向型对话系统中还可以构建NLG模块，所以其实用途十分广泛；第三，理解了seq2seq的本质，也方便学习transformer和bert，从而一步步改进现有的模型。
+
+这个模型没有word2vec、没有注意力机制，只是由几层LSTM构成的seq2seq模型，方便快速理解模型的结构和原理，训练之后也有可以接受的效果。
+
+
